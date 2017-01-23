@@ -1,0 +1,65 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username:
+    password:
+    driverClassName: com.mysql.jdbc.Driver
+  jpa:
+    database: MYSQL
+    showSql: true
+    hibernate:
+      ddlAuto: update
+      namingStrategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        
+server:
+  port: 9000
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://register:8761/eureka/
+  instance:
+    preferIpAddress: true
+    
+ribbon:
+  eureka:
+    enabled: true
+---
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username:
+    password:
+    driverClassName: com.mysql.jdbc.Driver
+  jpa:
+    database: MYSQL
+    showSql: true
+    hibernate:
+      ddlAuto: update
+      namingStrategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        
+server:
+  port: 8000
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://register:8761/eureka/
+  instance:
+    preferIpAddress: true
+    
+ribbon:
+  eureka:
+    enabled: true
